@@ -12,7 +12,7 @@ public class StackInt {
 	public void push(int num) {
 		linkedList.add(num);
 		int size = linkedList.size();
-		if (size == 1 || size > 0 && num > stackMax.peek()) {
+		if (size == 1 || size > 0 && num >= stackMax.peek()) {
 			stackMax.add(num);
 		}
 	}

@@ -7,9 +7,7 @@ import java.util.*;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import telran.util.StackInt;
 
@@ -61,14 +59,16 @@ class StandardCollectionTest {
 		assertTrue(() -> stack.isEmpty());
 		stack.push(10);
 		stack.push(1000);
+		stack.push(1000);
 		stack.push(300);
-		assertEquals(1000, stack.getMax());
 		assertEquals(1000, stack.getMax());
 		stack.push(3000);
 		assertEquals(3000, stack.getMax());
 		assertEquals(3000, stack.pop());
 		assertEquals(1000, stack.getMax());
 		assertEquals(300, stack.pop());
+		assertEquals(1000, stack.getMax());
+		assertEquals(1000, stack.pop());
 		assertEquals(1000, stack.getMax());
 		assertEquals(1000, stack.pop());
 		assertEquals(10, stack.getMax());
