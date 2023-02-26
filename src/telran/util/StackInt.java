@@ -1,27 +1,23 @@
 package telran.util;
 
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
-import java.util.Stack;
 
 public class StackInt {
 	
 	private static LinkedList<Integer> linkedList = new LinkedList<>();
-	private static Stack<Integer> stackMax = new Stack<>();
+	private static LinkedList<Integer> maxNumbers = new LinkedList<>();
 	
 	public void push(int num) {
-		linkedList.add(num);
-		int size = linkedList.size();
-		if (size == 1 || size > 0 && num >= stackMax.peek()) {
-			stackMax.add(num);
+		linkedList.addLast(num);
+		if (maxNumbers.isEmpty() || num >= maxNumbers.getLast()) {
+			maxNumbers.addLast(num);
 		}
 	}
 	
 	public int pop() {
-		int res = linkedList.getLast();
-		linkedList.removeLast();
-		if (stackMax.peek() == res) {
-			stackMax.pop();
+		int res = linkedList.removeLast();
+		if (res == maxNumbers.getLast()) {
+			maxNumbers.removeLast();
 		}
 		return res;
 	}
@@ -31,9 +27,6 @@ public class StackInt {
 	}
 	
 	public int getMax() {
-		if (linkedList.isEmpty()) {
-			throw new NoSuchElementException();
-		}
-		return stackMax.peek();
+		return maxNumbers.getLast();
 	}
 }
