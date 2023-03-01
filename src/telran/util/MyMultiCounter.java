@@ -1,18 +1,15 @@
 package telran.util;
 
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import telran.structure.MultiCounters;
 
-public class MyMultiCounter implements MultiCounters{
+public class MyMultiCounter implements MultiCounters {
 
-	Integer maxCount = 0;
-	TreeMap<Integer, HashSet<Object>> maxValuesTree = new TreeMap<>();
-	LinkedHashMap<Object, Integer> valueMap = new LinkedHashMap<>();
-	
+	private Integer maxCount = 0;
+	private TreeMap<Integer, HashSet<Object>> maxValuesTree = new TreeMap<>();
+	private HashMap<Object, Integer> valueMap = new HashMap<>();
+
 	@Override
 	public Integer addItem(Object item) {
 		int res = 1;
@@ -23,8 +20,7 @@ public class MyMultiCounter implements MultiCounters{
 			if (maxValuesTree.get(res - 1).isEmpty()) {
 				maxValuesTree.remove(res - 1);
 			}
-		}
-		else {
+		} else {
 			valueMap.put(item, res);
 		}
 		if (!maxValuesTree.containsKey(res)) {
